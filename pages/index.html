@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Form Validation</title>
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Form Validation</h1>
+            <table>
+        <form><tr>
+            <td style="font-size:25px;">Name:- </td>
+            <td><input type="text" placeholder="Enter Name" id="name" required class="t1"/></td>
+            <tr><td colspan="2"><div id="nameError"></div></td></tr>
+            </tr>
+
+            <tr>
+            <td><lable for="password" style="font-size: 25px;">Password:- </lable></td>
+            <td><input type="password" placeholder="Enter Password" id="password" required class="t1"/></td>
+            <tr><td colspan="2"><div id="passError"></div></td></tr>
+        </tr>
+        
+            <tr>
+            <td><lable for="Email" style="font-size: 25px;">Email:- </lable></td>
+            <td><input type="email" placeholder="Enter Email" id="email" required class="t1"/></td>
+            <tr><td colspan="2"><div id="emailError"></div></td></tr>
+        </tr>
+
+            <tr>
+            <td><lable for="phone" style="font-size: 25px;">Phone:- </lable></td>
+            <td><input type="number" placeholder="Enter Phone" id="phone" required class="t1"/></td>
+            <tr><td colspan="2"><div id="phoneError"></div></td></tr>
+        </tr>
+
+            <tr>
+            <td><lable for="Salary" style="font-size: 25px;">Salary:- </lable></td>
+            <td><input type="range"  id="salary" step="100" value="400000" min="300000" max="500000"/></td>
+            <tr><td colspan="2"><div id="errorSalary"></div></td></tr>
+            </tr>            
+       
+        </form>
+        </table>
+        </div>
+
+
+           <script>     
+            document.addEventListener("input",Myfunction);
+            function Myfunction()
+            {
+                let user=document.getElementById("name").value; 
+                
+                var nameRegex=/^[a-zA-Z- ]{3,}$/;
+                if(user.match(nameRegex))
+                {
+                    nameError.innerHTML=("<div style='color:green;font-weight:bold;'>Valid Name</div>");
+                }          
+                else
+                {
+                    nameError.innerHTML=("<div style='color:red;font-weight:bold;'>Invalid Name</div>");
+                }
+
+
+                //password
+                let userPass=document.getElementById("password").value; 
+                
+                var passRegex=/^[a-zA-Z-0-9-!@#$&*]{8,15}$/;
+                if(userPass.match(passRegex))
+                {
+                    passError.innerHTML=("<div style='color:green;font-weight:bold;'>Valid Password</div>");
+                }          
+                else
+                {
+                    passError.innerHTML=("<div style='color:red;font-weight:bold;'>Invalid Password</div>");
+                }
+
+                //email
+
+                let userEmail=document.getElementById("email").value; 
+                
+                var emailRegex=/^[a-zA-Z0-9]{2,}[@]{1}[a-zA-Z0-9]{2,}[.]{1}[a-zA-Z]{2,}$/;
+                if(userEmail.match(emailRegex))
+                {
+                    emailError.innerHTML=("<div style='color:green;font-weight:bold;'>Valid Email</div>");
+                }          
+                else
+                {
+                    emailError.innerHTML=("<div style='color:red;font-weight:bold;'>Invalid Email</div>");
+                }
+
+                //Teliphone
+                let userTeli=document.getElementById("phone").value;
+                
+                let phoneRegex=/^[5-9]{1}[0-9]{9}$/;
+                if(userTeli.match(phoneRegex))
+                {
+                    phoneError.innerHTML=("<div style='color:green;font-weight:bold;'>Valid Phone Number</div>");
+                }          
+                else
+                {
+                    phoneError.innerHTML=("<div style='color:red;font-weight:bold;'>Invalid Phone Number</div>");
+                } 
+
+                //salary
+                let salary=document.getElementById("salary").value;
+                if(salary>300000)
+                {
+                    errorSalary.innerHTML=(" Rs "+salary+" /-");
+                }
+                else
+                {
+                    errorSalary.innerHTML=("<div style='color:red;font-weight:bold;'>Invalid Salary</div>");
+                }
+            }
+
+
+         
+          </script>
+
+    </body>
+</html>
